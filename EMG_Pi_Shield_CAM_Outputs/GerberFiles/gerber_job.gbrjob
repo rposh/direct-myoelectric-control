@@ -1,0 +1,24 @@
+{
+    "Header": {
+        "Comment": "All values are metric (mm)",
+        "CreationDate": "2024-05-10T17:43:31Z",
+        "GenerationSoftware": {
+            "Application": "EAGLE",
+            "Vendor": "Autodesk",
+            "Version": "9.6.2"
+        },
+        "Part": "Single"
+    },
+    "Overall": {
+        "BoardThickness": 1.57,
+        "LayerNumber": 2,
+        "Name": {
+            "ProjectId": "EMG_PI_SHIELD_Open_Source"
+        },
+        "Owner": "Ryan Posh <rposh@nd.edu>",
+        "Size": {
+            "X": 55.05,
+            "Y": 80.03
+        }
+    }
+}
