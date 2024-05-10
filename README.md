@@ -4,7 +4,8 @@
 
 An open-source platform for direct myoelectric control using a Raspberry Pi, <br>enabling muscle control of robotic prostheses like the open-source leg or other Pi projects.
 
-![]((https://github.com/rposh/direct-myoelectric-control/blob/main/assets-images/banner.gif))
+![banner](https://github.com/rposh/direct-myoelectric-control/assets/74609418/1859e1fb-918b-4b97-8dbf-4ac18435b0d0)
+
 
 </div>
 
