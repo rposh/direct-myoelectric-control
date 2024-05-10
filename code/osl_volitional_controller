@@ -16,10 +16,21 @@ from OSL_EMG_Functions import EMG
 
 offline_mode = False  # Set to true for debugging without hardware
 
-ankle_stiffness = 200
-ankle_damping = 5
-passive_ankle_position = 0
-subjectID = 'Ryan'
+# For knee/ankle configuration:
+knee_stiffness = 200          # [Nm/rad]
+knee_damping = 5              # [Nms/rad]
+max_knee_velocity = 100       # [deg/s]
+
+passive_ankle_stiffness = 200 # [Nm/rad]
+passive_ankle_damping = 5     # [Nms/rad]
+passive_ankle_position = 0    # [deg]
+
+# For ankle-only configuration:
+ankle_stiffness = 200         # [Nm/rad]
+ankle_damping = 5             # [Nms/rad]
+
+subjectID = 'User'            # Update to user name if desired
+
 cal_filename = './' + subjectID + '_EMG_Cal.yaml'
 
 class VolitionalController:
@@ -124,11 +135,11 @@ if __name__ == "__main__":
                     osl.knee.set_impedance_gains()
                 osl.knee.set_joint_impedance(
                     K=units.convert_to_default(
-                        stiffness,
+                        knee_stiffness,
                         units.stiffness.N_m_per_rad,
                     ),
                     B=units.convert_to_default(
-                        damping,
+                        knee_damping,
                         units.damping.N_m_per_rad_per_s,
                     ),
                 )
@@ -143,11 +154,11 @@ if __name__ == "__main__":
                     osl.ankle.set_impedance_gains()
                 osl.ankle.set_joint_impedance(
                     K=units.convert_to_default(
-                        passive_stiffness,
+                        passive_ankle_stiffness,
                         units.stiffness.N_m_per_rad,
                     ),
                     B=units.convert_to_default(
-                        passive_damping,
+                        passive_ankle_damping,
                         units.damping.N_m_per_rad_per_s,
                     ),
                 )
@@ -159,7 +170,7 @@ if __name__ == "__main__":
 
             elif osl._has_ankle == True and osl._has_knee == False:
 
-                gamma = 20 #? (ROM) should be ROM/2, for max plantar/dorsi angle
+                gamma = 25 #should be ROM/2, for max plantar/dorsi angle
                 theta = gamma*u
 
                 if osl.ankle.mode != osl.ankle.control_modes.impedance:
